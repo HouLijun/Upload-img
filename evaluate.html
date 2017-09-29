@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="email=no">
+	<title>发表评价</title>
+	<script type="text/javascript" src="js/resize.js" ></script> 
+	<link rel="stylesheet" href="//at.alicdn.com/t/font_371173_odfstflmcjc0izfr.css" />
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="main_body evaluate_page">
+	<div class="goods_info">
+		<div class="thumb pull_left">
+			<img src="images/img_class.jpg" alt=""/>
+		</div>
+		<h2 class="goods_name ellipsis">东北大米稻花香农家新米粳米5kg五常大米东北大米稻花香农家新米粳米5kg五常大米</h2>
+	</div>
+	<div class="evaluate_wrapper">
+		<textarea name="" rows="5" cols="" placeholder="宝贝满足您的期待吗？说说它的优点和美中不足的地方吧"></textarea>
+		<ul class="img_list clearfix J_imgList">
+			<li class="add_img pull_left text_center" id="add_img">
+				<label for="upload_img" class="upload_label">
+					<i class="iconfont icon-camera"></i>
+					<div class="J_imgNum">添加图片</div>
+					<input type="file" accept="image/jpeg,image/jpg,image/png" id="upload_img" style="display: none;" multiple="multiple"/>
+				</label>
+			</li>
+		</ul>
+	</div>
+	<div class="grade clearfix">
+		<span class="intro pull_left">宝贝评分：</span>
+		<ul class="list pull_left clearfix">
+			<li class="pull_left text_center active">
+				<i class="iconfont icon-haoping"></i>
+				<div>好评</div>
+			</li>
+			<li class="pull_left text_center">
+				<i class="iconfont icon-zhongping"></i>
+				<div>中评</div>
+			</li>
+			<li class="pull_left text_center">
+				<i class="iconfont icon-chaping"></i>
+				<div>差评</div>
+			</li>
+		</ul>
+	<div>
+	<a href="javascript:void(0)" class="btn_submit text_center">提交评价</a>
+	<canvas id="canvas"  width="640px" height="960px" style="display: none;"></canvas>
+</div>	
+<script type="text/javascript" src="js/jquery-2.1.4.min.js" ></script>
+<script>
+var imgNum=0;
+var imgTotal=5;
+//添加图片
+$("#upload_img").on("change",function(e){
+	var files = e.target.files;
+	var length=files.length;
+	if(length>imgTotal-imgNum){
+		length=imgTotal-imgNum;
+		alert("最多只能选择"+(length)+"张图片");
+	}
+	//上传图片
+	for(var i=0;i<length;i++){
+		var file=files[i];
+		if(file.size > 1024 * 1024 *2) {
+            alert("图片大小不能超过 2MB!");
+            return;
+        }
+		var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload=function(ev){
+        	var jsonData = ev.target.result;
+        	// canvas 压缩图片
+        	var canvas=$("#canvas")[0];
+        	var ctx=canvas.getContext('2d');
+        	var image = new Image();
+        	
+        	image.src = jsonData;
+        	image.onload = function(){
+        		var w=image.width;
+        		var h=image.height;
+        		var ratio=w/h;
+        		canvas.height=640/ratio;
+	            ctx.drawImage(image, 0, 0,640,640/ratio);
+	            //图片base64字符串
+	            var dataUrl = canvas.toDataURL('image/png');
+	            // 清除画布
+	            canvas.height = canvas.height;
+	            //前台效果
+				imgNum++;
+				if(imgNum>=imgTotal){
+					$("#add_img").hide();
+				}
+				var ele="<li class='pos_r pull_left J_img'><div class='img_thumb'><img src='"+ dataUrl +"'></div><div class='close pos_a text_center J_delete'><i class='iconfont icon-wrong'></i></div></li>";
+				$("#add_img").before($(ele)).find(".J_imgNum").text(imgNum+" / "+imgTotal);	
+          	};
+        }
+        
+		
+	}		
+});
+//放大图片
+
+//删除图片
+$(".J_imgList").on("click",".J_delete",function(){
+	//删除上传的图片
+	
+	//前台效果
+	imgNum--;
+	if(imgNum<imgTotal&&imgNum>0){
+		$("#add_img").show().find(".J_imgNum").text(imgNum+" / "+imgTotal);
+	}else if(imgNum==0){
+		$("#add_img").find(".J_imgNum").text("添加图片");
+	}
+	var index=$(this).closest(".J_img").index();
+	$(".J_imgList").children(".J_img").eq(index).remove();
+})
+</script>
+</body>
+</html>

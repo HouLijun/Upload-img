@@ -1,0 +1,284 @@
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
+}
+/*base*/
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+}
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+html {
+  font-family: Helvetica;
+}
+body {
+  font-size: 0.24rem;
+  margin: 0;
+  color: #666666;
+}
+input,
+textarea,
+select {
+  margin: 0;
+  -webkit-appearance: none;
+  outline: 0;
+  border: 0;
+  background: transparent;
+  padding: 0;
+}
+img {
+  border: 0 ;
+}
+a {
+  color: #555555;
+  text-decoration: none;
+}
+ul,
+ol,
+dl {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+dd,
+dt {
+  margin: 0;
+  padding: 0;
+}
+em,
+i {
+  font-style: normal;
+}
+b {
+  font-weight: normal;
+}
+p {
+  margin: 0;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  line-height: 1.2;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+h1 {
+  font-size: 0.36rem !important;
+}
+h2 {
+  font-size: 0.3rem !important;
+}
+h3 {
+  font-size: 0.24rem !important;
+}
+h4 {
+  font-size: 0.22rem !important;
+}
+.pos_r {
+  position: relative;
+}
+.pos_a {
+  position: absolute;
+}
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ellipsis_clip {
+  display: -webkit-box;
+  overflow: hidden;
+  white-space: normal !important;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.text_left {
+  text-align: left;
+}
+.text_center {
+  text-align: center;
+}
+.text_right {
+  text-align: right;
+}
+.pull_left {
+  float: left;
+}
+.pull_right {
+  float: right;
+}
+.clearfix {
+  display: block;
+  zoom: 1;
+}
+.clearfix:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.c_main {
+  color: #b5091f;
+}
+.c_gray {
+  color: #333;
+}
+.c_lightgray {
+  color: #888;
+}
+.main_body {
+  min-height: 100%;
+}
+/************************E evaluate.html****************************/
+.evaluate_page {
+  padding: 0 0.2rem;
+}
+.evaluate_page .goods_info {
+  padding: 0.3rem 0;
+  border-bottom: 1px solid #dbdbdb;
+}
+.evaluate_page .goods_name {
+  line-height: 0.8rem !important;
+  color: #333;
+}
+.evaluate_page .thumb {
+  width: 0.8rem;
+  height: 0.8rem;
+  margin-right: 0.15rem;
+}
+.evaluate_page .thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.evaluate_page .evaluate_wrapper {
+  padding: 0.3rem 0;
+  border-bottom: 1px solid #dbdbdb;
+}
+.evaluate_page textarea {
+  width: 100%;
+  resize: none;
+  color: #666;
+  font-size: 0.24rem;
+}
+.evaluate_page .img_list {
+  margin-top: 0.4rem;
+}
+.evaluate_page .img_list li {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+.evaluate_page .img_list li .img_thumb {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.evaluate_page .img_list li .img_thumb img {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 100%;
+}
+.evaluate_page .img_list li .img_thumb.magnify {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 100;
+  background-color: #333;
+}
+.evaluate_page .img_list li .img_thumb.magnify img {
+  width: 80%;
+}
+.evaluate_page .img_list .add_img {
+  padding: 0.2rem 0;
+  border: 1px dashed #dbdbdb;
+  color: #999;
+}
+.evaluate_page .img_list .add_img .upload_label {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.evaluate_page .img_list .iconfont {
+  line-height: 0.65rem;
+  font-size: 0.6rem;
+}
+.evaluate_page .img_list .close {
+  z-index: 99;
+  width: 0.4rem;
+  height: 0.4rem;
+  right: -0.2rem;
+  top: -0.2rem;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.evaluate_page .img_list .close .iconfont {
+  font-size: 0.22rem;
+  color: #fff;
+  line-height: 0.4rem;
+}
+.evaluate_page .grade {
+  margin: 0.3rem 0;
+}
+.evaluate_page .grade .intro {
+  line-height: 1rem;
+  font-size: 0.26rem;
+  color: #333;
+}
+.evaluate_page .grade .list li {
+  width: 1.5rem;
+  height: 1rem;
+}
+.evaluate_page .grade .list .iconfont {
+  font-size: 0.6rem;
+  color: #999;
+}
+.evaluate_page .grade li.active {
+  color: #b5091f;
+}
+.evaluate_page .grade li.active .iconfont {
+  color: #b5091f;
+}
+.evaluate_page .btn_submit {
+  position: fixed;
+  left: 0.3rem;
+  right: 0.3rem;
+  margin: auto;
+  bottom: 0.5rem;
+  border-radius: 0.1rem;
+  line-height: 1rem;
+  background-color: #b5091f;
+  color: #fff;
+  font-size: 0.4rem;
+}
+/************************E evaluate.html****************************/
